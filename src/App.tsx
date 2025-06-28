@@ -77,29 +77,29 @@ function App() {
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8 max-w-6xl">
+      <div className="relative z-10 container mx-auto px-4 py-4 sm:py-6 md:py-8 max-w-7xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-2 sm:mb-4 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
             DevLog
           </h1>
-          <p className="text-white/70 text-lg">
+          <p className="text-white/70 text-base sm:text-lg">
             Create beautiful cards to share your development journey
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {/* Profile Section */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 order-2 lg:order-1">
             <ProfileSection />
           </div>
 
           {/* Main content */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6 order-1 lg:order-2">
             <DevlogCardCreator onSubmit={handleCardCreation} />
             
             {cardToDisplay && (
@@ -110,23 +110,21 @@ function App() {
                 className="space-y-4"
               >
                 <div className="text-center">
-                  <h3 className="text-white font-semibold text-xl mb-2">Your DevLog Card</h3>
+                  <h3 className="text-white font-semibold text-lg sm:text-xl mb-2">Your DevLog Card</h3>
                   <p className="text-white/60 text-sm">Click "Download Card" to save as PNG</p>
                 </div>
                 <div className="flex justify-center">
-                  <div className="transform scale-90 origin-center">
-                    <DevlogCard entry={cardToDisplay} />
-                  </div>
+                  <DevlogCard entry={cardToDisplay} />
                 </div>
               </motion.div>
             )}
 
             {!cardToDisplay && (
-              <div className="text-center py-12">
-                <div className="text-white/60 text-lg mb-4">
+              <div className="text-center py-8 sm:py-12">
+                <div className="text-white/60 text-base sm:text-lg mb-4">
                   No card created yet
                 </div>
-                <div className="text-white/40">
+                <div className="text-white/40 text-sm sm:text-base">
                   Fill out the form above to create your first DevLog card!
                 </div>
               </div>

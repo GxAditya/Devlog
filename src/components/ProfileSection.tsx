@@ -74,34 +74,35 @@ export const ProfileSection: React.FC = () => {
 
   if (loading) {
     return (
-      <GlassCard className="p-6 mb-8">
+      <GlassCard className="p-4 sm:p-6 mb-6 sm:mb-8">
         <div className="text-center">
-          <div className="w-20 h-20 bg-white/10 rounded-full mx-auto mb-4 animate-pulse" />
-          <div className="h-6 bg-white/10 rounded mb-2 animate-pulse" />
-          <div className="h-4 bg-white/10 rounded animate-pulse" />
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 rounded-full mx-auto mb-4 animate-pulse" />
+          <div className="h-4 sm:h-6 bg-white/10 rounded mb-2 animate-pulse" />
+          <div className="h-3 sm:h-4 bg-white/10 rounded animate-pulse" />
         </div>
       </GlassCard>
     );
   }
 
   return (
-    <GlassCard className="p-6 mb-8">
-      <div className="text-center space-y-4">
+    <GlassCard className="p-4 sm:p-6 mb-6 sm:mb-8">
+      <div className="text-center space-y-3 sm:space-y-4">
         {/* Connection Status */}
-        <div className="flex items-center justify-center gap-2 mb-4">
+        <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
           <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs ${
             isSupabaseConnected 
               ? 'bg-green-500/20 text-green-300 border border-green-500/30' 
               : 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30'
           }`}>
             <Database size={12} />
-            {isSupabaseConnected ? 'Authenticated' : 'Local Storage'}
+            <span className="hidden sm:inline">{isSupabaseConnected ? 'Authenticated' : 'Local Storage'}</span>
+            <span className="sm:hidden">{isSupabaseConnected ? 'Auth' : 'Local'}</span>
           </div>
         </div>
 
         {/* User Email */}
         {user?.email && (
-          <div className="text-white/60 text-sm mb-4">
+          <div className="text-white/60 text-xs sm:text-sm mb-3 sm:mb-4 break-all">
             {user.email}
           </div>
         )}
@@ -111,10 +112,10 @@ export const ProfileSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300 text-sm"
+            className="flex items-center gap-2 p-2 sm:p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300 text-xs sm:text-sm"
           >
-            <AlertCircle size={16} />
-            {error}
+            <AlertCircle size={14} className="sm:w-4 sm:h-4 flex-shrink-0" />
+            <span className="break-words">{error}</span>
           </motion.div>
         )}
 
@@ -122,13 +123,13 @@ export const ProfileSection: React.FC = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="relative mx-auto w-20 h-20"
+          className="relative mx-auto w-16 h-16 sm:w-20 sm:h-20"
         >
           {(profile.profilePicture || imagePreview) ? (
             <img
               src={imagePreview || profile.profilePicture}
               alt={profile.name || 'Profile'}
-              className="w-20 h-20 rounded-full object-cover border-2 border-white/20"
+              className="w-full h-full rounded-full object-cover border-2 border-white/20"
               onError={(e) => {
                 // Fallback to initials if image fails to load
                 const target = e.target as HTMLImageElement;
@@ -138,11 +139,11 @@ export const ProfileSection: React.FC = () => {
             />
           ) : null}
           <div
-            className={`w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold ${
+            className={`w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg ${
               (profile.profilePicture || imagePreview) ? 'hidden' : ''
             }`}
           >
-            {profile.name ? getInitials(profile.name) : <User size={32} />}
+            {profile.name ? getInitials(profile.name) : <User size={20} className="sm:w-8 sm:h-8" />}
           </div>
         </motion.div>
 
@@ -153,7 +154,7 @@ export const ProfileSection: React.FC = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="space-y-4"
+              className="space-y-3 sm:space-y-4"
             >
               <div>
                 <input
@@ -161,14 +162,14 @@ export const ProfileSection: React.FC = () => {
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
                   placeholder="Enter your name"
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white placeholder-white/60 text-center outline-none focus:border-white/40 transition-colors"
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white placeholder-white/60 text-center outline-none focus:border-white/40 transition-colors text-sm sm:text-base"
                   autoFocus
                 />
               </div>
               
               {/* Image Upload Section */}
-              <div className="space-y-3">
-                <div className="text-white/70 text-sm">Profile Picture (Browser Only)</div>
+              <div className="space-y-2 sm:space-y-3">
+                <div className="text-white/70 text-xs sm:text-sm">Profile Picture (Browser Only)</div>
                 
                 {/* Image Preview or Upload Button */}
                 {(editProfilePicture || imagePreview) ? (
@@ -176,19 +177,19 @@ export const ProfileSection: React.FC = () => {
                     <img
                       src={imagePreview || editProfilePicture}
                       alt="Preview"
-                      className="w-16 h-16 rounded-full object-cover border-2 border-white/20 mx-auto"
+                      className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-white/20 mx-auto"
                     />
                     <button
                       onClick={removeImage}
-                      className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs hover:bg-red-600 transition-colors"
+                      className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs hover:bg-red-600 transition-colors"
                     >
-                      <X size={12} />
+                      <X size={10} className="sm:w-3 sm:h-3" />
                     </button>
                   </div>
                 ) : (
                   <label className="cursor-pointer">
-                    <div className="w-16 h-16 bg-white/10 border-2 border-dashed border-white/30 rounded-full flex items-center justify-center mx-auto hover:bg-white/20 transition-colors">
-                      <Upload size={20} className="text-white/60" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/10 border-2 border-dashed border-white/30 rounded-full flex items-center justify-center mx-auto hover:bg-white/20 transition-colors">
+                      <Upload size={16} className="sm:w-5 sm:h-5 text-white/60" />
                     </div>
                     <input
                       type="file"
@@ -223,21 +224,21 @@ export const ProfileSection: React.FC = () => {
                 <motion.button
                   onClick={handleSave}
                   disabled={!editName.trim()}
-                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Save size={16} />
+                  <Save size={14} className="sm:w-4 sm:h-4" />
                   Save
                 </motion.button>
                 {hasProfile && (
                   <motion.button
                     onClick={handleCancel}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white font-medium"
+                    className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white font-medium text-sm"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <X size={16} />
+                    <X size={14} className="sm:w-4 sm:h-4" />
                     Cancel
                   </motion.button>
                 )}
@@ -251,36 +252,37 @@ export const ProfileSection: React.FC = () => {
               exit={{ opacity: 0, y: -10 }}
             >
               <div className="relative group">
-                <h2 className="text-2xl font-bold text-white mb-2">
+                <h2 className="text-lg sm:text-2xl font-bold text-white mb-2 break-words">
                   {profile.name || 'Anonymous Developer'}
                 </h2>
                 <motion.button
                   onClick={() => setIsEditing(true)}
-                  className="absolute -top-1 -right-8 opacity-0 group-hover:opacity-100 p-1 text-white/60 hover:text-white transition-all"
+                  className="absolute -top-1 -right-6 sm:-right-8 opacity-0 group-hover:opacity-100 p-1 text-white/60 hover:text-white transition-all"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Edit3 size={16} />
+                  <Edit3 size={14} className="sm:w-4 sm:h-4" />
                 </motion.button>
               </div>
-              <p className="text-white/70 mb-4">Building amazing things, one commit at a time</p>
+              <p className="text-white/70 mb-3 sm:mb-4 text-xs sm:text-sm">Building amazing things, one commit at a time</p>
               
               {/* Storage Info */}
-              <div className="text-center text-white/50 text-xs mb-4">
+              <div className="text-center text-white/50 text-xs mb-3 sm:mb-4">
                 <div className="flex items-center justify-center gap-1">
-                  <CheckCircle size={12} />
-                  Name: {isSupabaseConnected ? 'Supabase' : 'Local'} • Picture: Browser
+                  <CheckCircle size={10} className="sm:w-3 sm:h-3" />
+                  <span className="hidden sm:inline">Name: {isSupabaseConnected ? 'Supabase' : 'Local'} • Picture: Browser</span>
+                  <span className="sm:hidden">{isSupabaseConnected ? 'DB' : 'Local'} • Browser</span>
                 </div>
               </div>
 
               {/* Sign Out Button */}
               <motion.button
                 onClick={handleSignOut}
-                className="flex items-center gap-2 px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300 font-medium hover:bg-red-500/30 transition-all mx-auto"
+                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300 font-medium hover:bg-red-500/30 transition-all mx-auto text-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <LogOut size={16} />
+                <LogOut size={14} className="sm:w-4 sm:h-4" />
                 Sign Out
               </motion.button>
             </motion.div>
@@ -288,14 +290,14 @@ export const ProfileSection: React.FC = () => {
         </AnimatePresence>
 
         {!isEditing && (
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-white/10">
             <div className="text-center">
-              <div className="text-xl font-bold text-white">DevLog</div>
-              <div className="text-sm text-white/60">Platform</div>
+              <div className="text-lg sm:text-xl font-bold text-white">DevLog</div>
+              <div className="text-xs sm:text-sm text-white/60">Platform</div>
             </div>
             <div className="text-center">
-              <div className="text-xl font-bold text-white">Cards</div>
-              <div className="text-sm text-white/60">Creator</div>
+              <div className="text-lg sm:text-xl font-bold text-white">Cards</div>
+              <div className="text-xs sm:text-sm text-white/60">Creator</div>
             </div>
           </div>
         )}
