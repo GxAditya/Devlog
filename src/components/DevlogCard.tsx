@@ -134,9 +134,9 @@ export const DevlogCard: React.FC<DevlogCardProps> = ({ entry }) => {
                 </div>
 
                 {/* Date */}
-                <div className={`flex items-center justify-center gap-1 ${template.styles.date} text-xs`}>
-                  <Calendar size={12} />
-                  <span>{format(entry.timestamp, 'MMM dd, yyyy')}</span>
+                <div className={`flex items-center justify-center gap-2 ${template.styles.date} text-xs`}>
+                  <Calendar size={12} className="align-middle" />
+                  <span className="align-middle">{format(entry.timestamp, 'MMM dd, yyyy')}</span>
                 </div>
               </div>
             </div>
@@ -145,7 +145,7 @@ export const DevlogCard: React.FC<DevlogCardProps> = ({ entry }) => {
             <div className="flex-1 p-8 flex flex-col justify-center">
               <div className="space-y-4">
                 {/* Main Content */}
-                <div className={`${template.styles.content} text-lg leading-relaxed`}>
+                <div className={`${template.styles.content} text-lg leading-relaxed whitespace-pre-wrap`}>
                   {truncateText(entry.content, 200)}
                 </div>
 
