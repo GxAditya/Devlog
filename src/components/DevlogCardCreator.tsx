@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Palette, Code, Hash, X } from 'lucide-react';
+import { Send, Palette } from 'lucide-react';
 import { GlassCard } from './GlassCard';
 import { DevlogEntry } from '../types';
-import { cardTemplates, CardTemplate } from '../cardTemplates';
+import { cardTemplates } from '../cardTemplates';
 
 interface DevlogCardCreatorProps {
   onSubmit: (entry: DevlogEntry) => void;
@@ -13,10 +13,6 @@ export const DevlogCardCreator: React.FC<DevlogCardCreatorProps> = ({ onSubmit }
   const [content, setContent] = useState('');
   const [selectedTemplateId, setSelectedTemplateId] = useState('dark-gradient');
   const [showTemplates, setShowTemplates] = useState(false);
-  const [showCodeEditor, setShowCodeEditor] = useState(false);
-  const [codeSnippet, setCodeSnippet] = useState({ code: '', language: 'javascript' });
-  const [tags, setTags] = useState<string[]>([]);
-  const [currentTag, setCurrentTag] = useState('');
 
   const selectedTemplate = cardTemplates.find(t => t.id === selectedTemplateId) || cardTemplates[0];
 
@@ -26,8 +22,7 @@ export const DevlogCardCreator: React.FC<DevlogCardCreatorProps> = ({ onSubmit }
     const newEntry: DevlogEntry = {
       id: Date.now().toString(),
       content: content.trim(),
-      tags,
-      codeSnippet: codeSnippet.code ? codeSnippet : undefined,
+      tags: [],
       timestamp: new Date(),
       likes: 0,
       shares: 0,
@@ -38,21 +33,6 @@ export const DevlogCardCreator: React.FC<DevlogCardCreatorProps> = ({ onSubmit }
 
     // Reset form
     setContent('');
-    setTags([]);
-    setCurrentTag('');
-    setCodeSnippet({ code: '', language: 'javascript' });
-    setShowCodeEditor(false);
-  };
-
-  const addTag = () => {
-    if (currentTag.trim() && !tags.includes(currentTag.trim())) {
-      setTags([...tags, currentTag.trim()]);
-      setCurrentTag('');
-    }
-  };
-
-  const removeTag = (tagToRemove: string) => {
-    setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -178,99 +158,8 @@ export const DevlogCardCreator: React.FC<DevlogCardCreatorProps> = ({ onSubmit }
           </div>
         </div>
 
-        {/* Tags */}
-        <AnimatePresence>
-          {tags.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="flex flex-wrap gap-2"
-            >
-              {tags.map((tag) => (
-                <motion.span
-                  key={tag}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="inline-flex items-center gap-1 px-2 sm:px-3 py-1 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full text-xs sm:text-sm text-white border border-white/20"
-                >
-                  #{tag}
-                  <button
-                    onClick={() => removeTag(tag)}
-                    className="hover:text-red-300 transition-colors"
-                  >
-                    <X size={12} />
-                  </button>
-                </motion.span>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Code editor */}
-        <AnimatePresence>
-          {showCodeEditor && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="space-y-2"
-            >
-              <select
-                value={codeSnippet.language}
-                onChange={(e) => setCodeSnippet({ ...codeSnippet, language: e.target.value })}
-                className="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm w-full sm:w-auto"
-              >
-                <option value="javascript">JavaScript</option>
-                <option value="typescript">TypeScript</option>
-                <option value="python">Python</option>
-                <option value="css">CSS</option>
-                <option value="html">HTML</option>
-                <option value="json">JSON</option>
-              </select>
-              <textarea
-                value={codeSnippet.code}
-                onChange={(e) => setCodeSnippet({ ...codeSnippet, code: e.target.value })}
-                placeholder="Paste your code here..."
-                className="w-full h-20 sm:h-24 bg-black/30 border border-white/20 rounded-lg p-3 text-white font-mono text-sm resize-none"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Tag input */}
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={currentTag}
-            onChange={(e) => setCurrentTag(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && addTag()}
-            placeholder="Add tags..."
-            className="flex-1 bg-transparent border-b border-white/20 pb-2 text-white placeholder-white/60 outline-none focus:border-white/40 transition-colors text-sm sm:text-base"
-          />
-          <button
-            onClick={addTag}
-            className="text-white/60 hover:text-white transition-colors"
-          >
-            <Hash size={20} />
-          </button>
-        </div>
-
-        {/* Action buttons */}
-        <div className="flex items-center justify-between pt-4">
-          <div className="flex gap-3">
-            <button
-              onClick={() => setShowCodeEditor(!showCodeEditor)}
-              className={`p-2 rounded-lg transition-all ${
-                showCodeEditor 
-                  ? 'bg-purple-500/30 text-white' 
-                  : 'text-white/60 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              <Code size={20} />
-            </button>
-          </div>
-
+        {/* Action button */}
+        <div className="flex justify-end pt-4">
           <motion.button
             onClick={handleSubmit}
             disabled={!content.trim()}
