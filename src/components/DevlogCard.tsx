@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Download, Hash, User, Calendar } from 'lucide-react';
+import { Download, Hash, User } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { format } from 'date-fns';
@@ -146,9 +146,8 @@ export const DevlogCard: React.FC<DevlogCardProps> = ({ entry }) => {
                 </div>
 
                 {/* Date */}
-                <div className={`flex items-center justify-center gap-1 sm:gap-2 ${template.styles.date} text-xs`}>
-                  <Calendar size={10} className="sm:w-3 sm:h-3 md:w-3 md:h-3 align-middle" />
-                  <span className="align-middle">{format(entry.timestamp, 'MMM dd, yyyy')}</span>
+                <div className={`${template.styles.date} text-xs`}>
+                  {format(entry.timestamp, 'MMM dd, yyyy')}
                 </div>
               </div>
             </div>
