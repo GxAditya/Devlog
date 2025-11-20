@@ -361,6 +361,176 @@ export const cardTemplates: CardTemplate[] = [
     }
   },
 
+  // Modern Templates
+  {
+    id: 'cyberpunk',
+    name: 'Cyberpunk',
+    theme: 'dark',
+    preview: 'bg-gradient-to-br from-fuchsia-600 via-purple-600 to-blue-600',
+    styles: {
+      container: 'bg-gradient-to-br from-fuchsia-600 via-purple-600 to-blue-600',
+      background: 'bg-pink-500/10',
+      profileSection: 'bg-black/40 backdrop-blur-md border-r border-pink-500/30',
+      contentSection: 'bg-transparent',
+      profilePicture: 'border-2 border-pink-500/70',
+      initials: 'bg-gradient-to-br from-pink-500 to-purple-600 text-white',
+      name: 'text-pink-300 font-bold text-xl',
+      role: 'text-pink-200/80',
+      date: 'text-pink-200/60',
+      content: 'text-pink-100',
+      codeSnippet: 'bg-black/70 border border-pink-500/30',
+      tags: 'bg-pink-500/40 text-pink-100 border-pink-500/50',
+      branding: 'text-pink-300/70 border-pink-500/30'
+    }
+  },
+  {
+    id: 'synthwave',
+    name: 'Synthwave',
+    theme: 'dark',
+    preview: 'bg-gradient-to-br from-purple-900 via-pink-700 to-orange-500',
+    styles: {
+      container: 'bg-gradient-to-br from-purple-900 via-pink-700 to-orange-500',
+      background: 'bg-cyan-300/10',
+      profileSection: 'bg-black/30 backdrop-blur-sm border-r border-cyan-300/30',
+      contentSection: 'bg-transparent',
+      profilePicture: 'border-2 border-cyan-300/60',
+      initials: 'bg-gradient-to-br from-cyan-300 to-blue-400 text-purple-900 font-bold',
+      name: 'text-cyan-200 font-bold',
+      role: 'text-cyan-200/80',
+      date: 'text-cyan-200/60',
+      content: 'text-cyan-100',
+      codeSnippet: 'bg-purple-900/70 border border-cyan-300/30',
+      tags: 'bg-cyan-300/30 text-cyan-100 border-cyan-300/40',
+      branding: 'text-cyan-200/70 border-cyan-300/30'
+    }
+  },
+  {
+    id: 'glass-dark',
+    name: 'Glass Dark',
+    theme: 'dark',
+    preview: 'bg-gradient-to-br from-gray-800 to-gray-900',
+    styles: {
+      container: 'bg-gradient-to-br from-gray-800 to-gray-900',
+      background: 'bg-white/5',
+      profileSection: 'bg-white/5 backdrop-blur-lg border-r border-white/10',
+      contentSection: 'bg-transparent',
+      profilePicture: 'border-2 border-white/20',
+      initials: 'bg-white/20 text-white',
+      name: 'text-white font-bold',
+      role: 'text-gray-300',
+      date: 'text-gray-400',
+      content: 'text-gray-200',
+      codeSnippet: 'bg-white/10 border border-white/10',
+      tags: 'bg-white/10 text-gray-200 border-white/20',
+      branding: 'text-gray-500 border-white/10'
+    }
+  },
+  {
+    id: 'glass-light',
+    name: 'Glass Light',
+    theme: 'light',
+    preview: 'bg-gradient-to-br from-gray-100 to-gray-200',
+    styles: {
+      container: 'bg-gradient-to-br from-gray-100 to-gray-200',
+      background: 'bg-white/30',
+      profileSection: 'bg-white/50 backdrop-blur-lg border-r border-gray-300/50',
+      contentSection: 'bg-transparent',
+      profilePicture: 'border-2 border-white/80',
+      initials: 'bg-white/80 text-gray-800',
+      name: 'text-gray-800 font-bold',
+      role: 'text-gray-600',
+      date: 'text-gray-500',
+      content: 'text-gray-700',
+      codeSnippet: 'bg-white/80 border border-gray-200',
+      tags: 'bg-white/80 text-gray-700 border-gray-200',
+      branding: 'text-gray-400 border-gray-200'
+    }
+  },
+  {
+    id: 'minimal-light',
+    name: 'Minimal Light',
+    theme: 'light',
+    preview: 'bg-gradient-to-br from-gray-50 to-white',
+    styles: {
+      container: 'bg-gradient-to-br from-gray-50 to-white',
+      background: 'bg-gray-100/50',
+      profileSection: 'bg-white/80 backdrop-blur-sm border-r border-gray-200',
+      contentSection: 'bg-transparent',
+      profilePicture: 'border-2 border-gray-300',
+      initials: 'bg-gradient-to-br from-gray-600 to-gray-800 text-white',
+      name: 'text-gray-900 font-bold',
+      role: 'text-gray-600',
+      date: 'text-gray-500',
+      content: 'text-gray-800',
+      codeSnippet: 'bg-gray-100 border border-gray-300',
+      tags: 'bg-gray-200 text-gray-700 border-gray-300',
+      branding: 'text-gray-500 border-gray-200'
+    }
+  },
+  // Additional Modern Templates
+  {
+    id: 'sunrise',
+    name: 'Sunrise',
+    theme: 'light',
+    preview: 'bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-100',
+    styles: {
+      container: 'bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-100',
+      background: 'bg-white/30',
+      profileSection: 'bg-white/70 backdrop-blur-sm border-r border-orange-200',
+      contentSection: 'bg-transparent',
+      profilePicture: 'border-2 border-orange-300',
+      initials: 'bg-gradient-to-r from-orange-400 to-pink-400 text-white',
+      name: 'text-orange-800 font-bold',
+      role: 'text-orange-600',
+      date: 'text-orange-500',
+      content: 'text-orange-800',
+      codeSnippet: 'bg-white/80 border border-orange-200',
+      tags: 'bg-orange-100 text-orange-800 border-orange-200',
+      branding: 'text-orange-300 border-orange-200'
+    }
+  },
+  {
+    id: 'midnight-ocean',
+    name: 'Midnight Ocean',
+    theme: 'dark',
+    preview: 'bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900',
+    styles: {
+      container: 'bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900',
+      background: 'bg-blue-400/10',
+      profileSection: 'bg-indigo-900/50 backdrop-blur-sm',
+      contentSection: 'bg-transparent',
+      profilePicture: 'border-2 border-blue-400/60',
+      initials: 'bg-gradient-to-br from-blue-400 to-indigo-400 text-white',
+      name: 'text-blue-200 font-bold',
+      role: 'text-blue-200/80',
+      date: 'text-blue-200/60',
+      content: 'text-blue-100',
+      codeSnippet: 'bg-blue-900/70 border border-blue-400/30',
+      tags: 'bg-blue-400/30 text-blue-100 border-blue-400/40',
+      branding: 'text-blue-200/70 border-blue-400/30'
+    }
+  },
+  {
+    id: 'hacker',
+    name: 'Hacker',
+    theme: 'dark',
+    preview: 'bg-gradient-to-br from-green-900 to-black',
+    styles: {
+      container: 'bg-gradient-to-br from-green-900 to-black',
+      background: 'bg-green-500/10',
+      profileSection: 'bg-black/60 backdrop-blur-sm border-r border-green-500/30',
+      contentSection: 'bg-transparent',
+      profilePicture: 'border-2 border-green-500/60',
+      initials: 'bg-green-500/20 text-green-400 border border-green-500/30',
+      name: 'text-green-400 font-mono font-bold',
+      role: 'text-green-500/80',
+      date: 'text-green-600',
+      content: 'text-green-300 font-mono text-sm',
+      codeSnippet: 'bg-black/80 border border-green-500/30 font-mono text-green-400',
+      tags: 'bg-green-900/50 text-green-400 border border-green-500/30 font-mono text-xs',
+      branding: 'text-green-700 border-green-800/50 font-mono text-xs'
+    }
+  },
   // Light Templates (4)
   {
     id: 'light-minimal',

@@ -12,13 +12,3 @@ export interface DevlogEntry {
   shares: number;
   templateId?: string;
 }
-
-export interface UserProfile {
-  id: string;
-  username: string;
-  displayName: string;
-  avatar: string;
-  githubUrl?: string;
-  bio: string;
-  joinedDate: Date;
-}

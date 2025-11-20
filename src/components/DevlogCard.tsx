@@ -1,12 +1,11 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Download, Hash, User } from 'lucide-react';
+import { Download, Hash } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { format } from 'date-fns';
 import html2canvas from 'html2canvas';
 import { DevlogEntry } from '../types';
-import { useUserProfile } from '../hooks/useUserProfile';
 import { getTemplateById } from '../cardTemplates';
 
 interface DevlogCardProps {
@@ -14,18 +13,10 @@ interface DevlogCardProps {
 }
 
 export const DevlogCard: React.FC<DevlogCardProps> = ({ entry }) => {
-  const { profile } = useUserProfile();
   const cardRef = useRef<HTMLDivElement>(null);
   const template = getTemplateById(entry.templateId || 'dark-gradient');
-
-  const getInitials = (name: string) => {
-    return name
-      .split(' ')
-      .map(word => word.charAt(0))
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
-  };
+  const profileName = 'DevLog Creator';
+  const profileInitials = 'DL';
 
   const handleDownloadCard = async () => {
     if (!cardRef.current) return;
@@ -114,33 +105,14 @@ export const DevlogCard: React.FC<DevlogCardProps> = ({ entry }) => {
             <div className={`w-1/3 p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center ${template.styles.profileSection}`}>
               <div className="text-center space-y-2 sm:space-y-3 md:space-y-4">
                 {/* Profile Picture */}
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto">
-                  {profile.profilePicture ? (
-                    <img
-                      src={profile.profilePicture}
-                      alt={profile.name || 'Profile'}
-                      className={`w-full h-full rounded-full object-cover ${template.styles.profilePicture}`}
-                      crossOrigin="anonymous"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                  ) : null}
-                  <div
-                    className={`w-full h-full ${template.styles.initials} rounded-full flex items-center justify-center font-bold text-sm sm:text-lg md:text-xl ${
-                      profile.profilePicture ? 'hidden' : ''
-                    }`}
-                  >
-                    {profile.name ? getInitials(profile.name) : <User size={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8" />}
-                  </div>
+                <div className={`relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto ${template.styles.initials} rounded-full flex items-center justify-center font-bold text-sm sm:text-lg md:text-xl`}>
+                  {profileInitials}
                 </div>
 
                 {/* Name */}
                 <div>
                   <h2 className={`text-sm sm:text-lg md:text-xl ${template.styles.name} mb-1`}>
-                    {profile.name || 'Anonymous Developer'}
+                    {profileName}
                   </h2>
                   <p className={`${template.styles.role} text-xs sm:text-sm`}>Developer</p>
                 </div>
