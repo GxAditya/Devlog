@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Palette } from 'lucide-react';
+import { Send, Palette, Image as ImageIcon, X } from 'lucide-react';
 import { GlassCard } from './GlassCard';
 import { DevlogEntry } from '../types';
 import { cardTemplates } from '../cardTemplates';
@@ -13,11 +13,34 @@ export const DevlogCardCreator: React.FC<DevlogCardCreatorProps> = ({ onSubmit }
   const [content, setContent] = useState('');
   const [selectedTemplateId, setSelectedTemplateId] = useState('dark-gradient');
   const [showTemplates, setShowTemplates] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const selectedTemplate = cardTemplates.find(t => t.id === selectedTemplateId) || cardTemplates[0];
 
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      alert('Please upload an image file');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setImagePreview(event.target?.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const removeImage = () => {
+    setImagePreview(null);
+    const fileInput = document.getElementById('image-upload') as HTMLInputElement;
+    if (fileInput) fileInput.value = '';
+  };
+
   const handleSubmit = () => {
-    if (!content.trim()) return;
+    if (!content.trim() && !imagePreview) return;
 
     const newEntry: DevlogEntry = {
       id: Date.now().toString(),
@@ -26,13 +49,17 @@ export const DevlogCardCreator: React.FC<DevlogCardCreatorProps> = ({ onSubmit }
       timestamp: new Date(),
       likes: 0,
       shares: 0,
-      templateId: selectedTemplateId
+      templateId: selectedTemplateId,
+      image: imagePreview || undefined
     };
 
     onSubmit(newEntry);
 
     // Reset form
     setContent('');
+    setImagePreview(null);
+    const fileInput = document.getElementById('image-upload') as HTMLInputElement;
+    if (fileInput) fileInput.value = '';
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -155,6 +182,48 @@ export const DevlogCardCreator: React.FC<DevlogCardCreatorProps> = ({ onSubmit }
           />
           <div className="absolute bottom-3 right-3 text-xs sm:text-sm text-white/50 bg-black/20 px-2 py-1 rounded">
             {content.length}/280
+          </div>
+
+          {/* Image Upload */}
+          <div className="mt-3 space-y-2">
+            <div className="flex items-center justify-between">
+              <label 
+                htmlFor="image-upload" 
+                className="flex items-center gap-2 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white/80 hover:text-white hover:bg-white/20 transition-all text-sm cursor-pointer"
+                title="Upload a profile picture"
+              >
+                <ImageIcon size={16} />
+                <span>Add Profile Picture</span>
+              </label>
+              <input
+                id="image-upload"
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
+              {imagePreview && (
+                <button
+                  type="button"
+                  onClick={removeImage}
+                  className="flex items-center gap-1 px-2 py-1 text-xs bg-red-500/20 text-red-300 rounded hover:bg-red-500/30 transition-colors"
+                >
+                  <X size={12} /> Remove
+                </button>
+              )}
+            </div>
+            {imagePreview && (
+              <div className="flex flex-col items-center">
+                <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white/30 mt-2">
+                  <img 
+                    src={imagePreview} 
+                    alt="Profile preview" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <p className="text-xs text-white/60 mt-2">This will be your profile picture</p>
+              </div>
+            )}
           </div>
         </div>
 

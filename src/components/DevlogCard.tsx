@@ -105,8 +105,18 @@ export const DevlogCard: React.FC<DevlogCardProps> = ({ entry }) => {
             <div className={`w-1/3 p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center ${template.styles.profileSection}`}>
               <div className="text-center space-y-2 sm:space-y-3 md:space-y-4">
                 {/* Profile Picture */}
-                <div className={`relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto ${template.styles.initials} rounded-full flex items-center justify-center font-bold text-sm sm:text-lg md:text-xl`}>
-                  {profileInitials}
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto overflow-hidden rounded-full border-2 border-white/30">
+                  {entry.image ? (
+                    <img 
+                      src={entry.image} 
+                      alt="Profile" 
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className={`w-full h-full ${template.styles.initials} flex items-center justify-center font-bold text-sm sm:text-lg md:text-xl`}>
+                      {profileInitials}
+                    </div>
+                  )}
                 </div>
 
                 {/* Name */}
