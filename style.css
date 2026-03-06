@@ -1,0 +1,320 @@
+/* Custom properties for metal effects */
+:root {
+    /* Base Obsidian Palette */
+    --metal-dark: #000000;
+    --metal-base: #060606;
+    --metal-light: #0d0d0d;
+    --metal-shine: #151515;
+
+    /* Base Gold Overlay Palette */
+    --accent-1: #bf953f;
+    --accent-2: #fcf6ba;
+    --accent-3: #b38728;
+    --accent-4: #fbf5b7;
+    --accent-5: #aa771c;
+
+    /* Base Accent Styles */
+    --accent-shadow-rgb: 212, 175, 55;
+    --accent-border: #d4af37;
+    --chip-1: #e6c875;
+    --chip-2: #b38728;
+    --chip-3: #fcf6ba;
+    --chip-stroke: #8a6519;
+}
+
+/* Material Switcher Themes */
+
+/* 1. Obsidian (Pitch Black + Gold) */
+.theme-obsidian {
+    --metal-dark: #000000;
+    --metal-base: #060606;
+    --metal-light: #0d0d0d;
+    --metal-shine: #151515;
+    
+    --bg-pattern: repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(255, 255, 255, 0.02) 1px, rgba(255, 255, 255, 0.02) 2px);
+    --pattern-blend: overlay;
+    --frame-display: none;
+
+    --font-title: 'Cinzel', serif;
+    --font-body: 'JetBrains Mono', monospace;
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --text-accent: rgba(212, 175, 55, 0.7);
+
+    --accent-1: #bf953f; --accent-2: #fcf6ba; --accent-3: #b38728; --accent-4: #fbf5b7; --accent-5: #aa771c;
+    --accent-shadow-rgb: 212, 175, 55;
+    --text-shadow-alpha: 0.3;
+    --accent-border: rgba(212, 175, 55, 0.5);
+    
+    --chip-1: #e6c875; --chip-2: #b38728; --chip-3: #fcf6ba;
+    --chip-stroke: #8a6519;
+}
+
+/* 2. Platinum (Silver/White Metal) */
+.theme-silver {
+    --metal-dark: #a9acb2;
+    --metal-base: #ccd0d6;
+    --metal-light: #e8e9ec;
+    --metal-shine: #ffffff;
+    
+    /* Intricate background pattern combining radial and brushed textures */
+    --bg-pattern: 
+        repeating-radial-gradient(circle at 40% 50%, transparent 0, transparent 20px, rgba(255,255,255,0.4) 20px, rgba(255,255,255,0.4) 21px),
+        repeating-radial-gradient(circle at 60% 50%, transparent 0, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px),
+        repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(255,255,255,0.5) 1px, rgba(255,255,255,0.5) 2px);
+    --pattern-blend: normal;
+
+    --frame-display: block;
+    --frame-color: rgba(30, 35, 40, 0.6);
+    --frame-highlight: rgba(255, 255, 255, 0.5);
+
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+    --text-primary: #1e293b; /* sharp dark charcoal */
+    --text-secondary: #475569; /* medium charcoal */
+    --text-accent: #0f172a;
+
+    /* Dark Metallic Gunmetal Accents for shiny textured text on silver */
+    --accent-1: #4a4f58; --accent-2: #9299a6; --accent-3: #1f2226; --accent-4: #6b7280; --accent-5: #111315;
+    --accent-shadow-rgb: 20, 25, 30; 
+    --text-shadow-alpha: 0.5;
+    --accent-border: rgba(30, 35, 40, 0.4);
+    
+    --chip-1: #e2e8f0; --chip-2: #9ca3af; --chip-3: #f8fafc;
+    --chip-stroke: #475569;
+}
+
+/* 3. Pure Gold (Amex Gold Style) */
+.theme-gold {
+    --metal-dark: #916e1e;
+    --metal-base: #c49d2c;
+    --metal-light: #e6bc3a;
+    --metal-shine: #fcec95;
+    
+    --bg-pattern: 
+        repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 20px, rgba(255,255,255,0.15) 20px, rgba(255,255,255,0.15) 21px),
+        repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(255,255,255,0.08) 1px, rgba(255,255,255,0.08) 2px);
+    --pattern-blend: normal;
+
+    --frame-display: block;
+    --frame-color: rgba(60, 40, 0, 0.6);
+    --frame-highlight: rgba(255, 255, 255, 0.2);
+
+    --font-title: 'Cinzel', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --text-primary: #1c1403;
+    --text-secondary: #4a360a;
+    --text-accent: #241a04;
+
+    /* Deep Polished Bronze/Charcoal with textured metallic shine */
+    --accent-1: #38290f; --accent-2: #8a6a24; --accent-3: #171105; --accent-4: #543f1b; --accent-5: #0a0702;
+    --accent-shadow-rgb: 25, 20, 10;
+    --text-shadow-alpha: 0.6;
+    --accent-border: rgba(92, 68, 15, 0.5);
+    
+    --chip-1: #e6c875; --chip-2: #b38728; --chip-3: #fcf6ba;
+    --chip-stroke: #5c440f;
+}
+
+/* Scrollbar styling for inputs */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-3); }
+
+/* The luxurious metallic black card base */
+.metal-card {
+    background: 
+        /* Very soft, broad, natural reflection */
+        linear-gradient(105deg, 
+            rgba(255, 255, 255, 0.04) 0%, 
+            transparent 35%, 
+            transparent 65%, 
+            rgba(255, 255, 255, 0.02) 100%
+        ),
+        /* Deeper, smoother metallic curve */
+        linear-gradient(160deg, 
+            var(--metal-dark) 0%, 
+            var(--metal-base) 45%, 
+            var(--metal-shine) 65%, 
+            var(--metal-base) 80%, 
+            var(--metal-dark) 100%
+        );
+    background-color: var(--metal-dark);
+    box-shadow: 
+        inset 1px 1px 1px rgba(255, 255, 255, 0.05), 
+        inset -1px -1px 2px rgba(0, 0, 0, 0.9),
+        inset 0 0 40px rgba(0, 0, 0, 0.9),
+        0 25px 50px -15px rgba(0, 0, 0, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle textured metal pattern overlay */
+.metal-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-pattern, repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(255, 255, 255, 0.02) 1px, rgba(255, 255, 255, 0.02) 2px));
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: var(--pattern-blend, overlay);
+}
+
+/* Soft ambient glow from the top to mimic natural light scattering */
+.metal-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 120% at 50% -10%, rgba(255,255,255,0.06) 0%, transparent 80%);
+    z-index: 2;
+    pointer-events: none;
+    /* Optional: Animate reflection on hover if desired, but kept static for clean export */
+}
+
+/* Amex Style Dotted Edge Frame */
+.card-frame {
+    display: var(--frame-display, none);
+    position: absolute;
+    inset: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--frame-color);
+    outline: 2px dotted var(--frame-color);
+    outline-offset: -5px;
+    box-shadow: inset 0 0 0 10px var(--frame-highlight, rgba(255,255,255,0.1));
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Premium Text Clipping */
+.card-accent-text, .gold-text {
+    background: linear-gradient(to right, var(--accent-2), var(--accent-1), var(--accent-4), var(--accent-3), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, var(--text-shadow-alpha, 0.3)), 0 0 15px rgba(var(--accent-shadow-rgb), 0.5);
+    /* Ensure no wrapping artifacts in webkit */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+/* Typography Helpers */
+.card-font-title { font-family: var(--font-title); }
+.card-font-body { font-family: var(--font-body); }
+.card-text-primary { color: var(--text-primary); }
+.card-text-secondary { color: var(--text-secondary); }
+.card-text-accent { color: var(--text-accent); }
+
+/* Material Selector Buttons */
+.mat-btn, .tpl-btn {
+    background: #141414;
+    border: 1px solid #2d2d2d;
+    color: #888;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mat-btn:hover, .tpl-btn:hover {
+    border-color: #555;
+    color: #ccc;
+}
+
+.mat-btn.active, .tpl-btn.active {
+    background: linear-gradient(135deg, #1b1b1e, #0d0d0f);
+    border-color: var(--accent-3);
+    color: var(--accent-2);
+    box-shadow: inset 0 0 10px rgba(var(--accent-shadow-rgb),0.1);
+}
+
+/* Semantic Card Element Styles */
+.card-avatar {
+    border-color: var(--accent-2);
+    box-shadow: 0 0 20px rgba(var(--accent-shadow-rgb), 0.2);
+}
+
+.card-avatar-small {
+    border-color: var(--accent-border);
+}
+
+.card-avatar-large {
+    border-color: var(--accent-2);
+    box-shadow: 0 0 30px rgba(var(--accent-shadow-rgb), 0.15);
+}
+
+.card-date {
+    color: rgba(var(--accent-shadow-rgb), 1);
+}
+
+.card-divider {
+    border-color: var(--accent-border);
+}
+
+.card-line-left {
+    background: linear-gradient(to right, transparent, var(--accent-1));
+}
+
+.card-line-right {
+    background: linear-gradient(to left, transparent, var(--accent-1));
+}
+
+/* Assure inner content is above texture overlays */
+.tpl-content {
+    z-index: 10;
+}
+
+/* Premium Founder Border Detail */
+.founder-border {
+    position: relative;
+}
+
+.founder-border::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border-radius: 12px;
+    padding: 1.5px; /* Border thickness */
+    background: linear-gradient(135deg, 
+        var(--accent-2) 0%, 
+        var(--accent-3) 25%, 
+        transparent 40%, 
+        transparent 60%, 
+        var(--accent-3) 75%, 
+        var(--accent-2) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+    filter: drop-shadow(0 0 4px rgba(var(--accent-shadow-rgb), 0.4));
+}
+
+.founder-border::after {
+    content: '';
+    position: absolute;
+    inset: 18px;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(315deg, 
+        var(--accent-2) 0%, 
+        var(--accent-3) 15%, 
+        transparent 30%, 
+        transparent 70%, 
+        var(--accent-3) 85%, 
+        var(--accent-2) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+}
