@@ -1,22 +1,21 @@
-# DevLog
+<div align="center">
+  <img src="logo.svg" alt="Devlog Premium Logo" width="120" />
+  <h1>Devlog</h1>
+  
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-d4af37?style=for-the-badge&labelColor=0a0a0a" alt="License: MIT"></a>
 
-A beautiful, client-side only tool for developers to create and download stylish devlog cards. No accounts, no data storage - just create and download your cards instantly.
+  <p>Generate premium metallic cards for your daily updates. Pure HTML, Tailwind CSS, and zero dependencies.</p>
+</div>
 
-## ✨ Features
+## Features
 
-- 🎨 20+ beautiful card templates with dark/light themes including:
-  - 🌈 Gradient themes (Dark, Light, Sunset, Ocean, Cyberpunk, Synthwave)
-  - 🌌 Neon themes (Dark, Light, Neon Pink, Electric Blue)
-  - 🎨 Solid color themes (Dark, Light, Professional, Minimal, Midnight)
-  - 🎭 Special themes (Glassmorphism, Terminal, Paper, Retro, Hacker)
-  - 🌟 New additions: Cyberpunk, Synthwave, Glass Dark/Light, Minimal Light, Sunrise
-- 💾 100% client-side - no data leaves your browser
-- 📥 One-click download as PNG
-- ✏️ Customize with code snippets and tags
-- 🎭 Dark/Light mode support
-- 🎉 No sign-up required
+- **Premium Materials**: Choose from Obsidian (Pitch Black and Gold), Platinum (Silver and Gunmetal), and Pure Gold finishes.
+- **Luxurious Editions**: Three distinct professional layouts (Centurion, Executive, and Founder) perfectly suited to highlight your content.
+- **Intricate Detailing**: High-end metallic gradients, radial textures, dotted edge frames, and crisp typography utilizing Cinzel and JetBrains Mono.
+- **Client-Side Export**: High-resolution image generation entirely in the browser. Zero data leaves your local machine.
+- **Static and Lightweight**: Built purely with HTML, Vanilla JavaScript, and Tailwind CSS. No build steps required.
 
-## 🚀 Getting Started
+## Getting Started
 
 1. Clone the repository:
    ```bash
@@ -24,34 +23,26 @@ A beautiful, client-side only tool for developers to create and download stylish
    cd devlog
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+2. Open the application:
+   Simply double-click the `index.html` file to open it in your favorite modern browser. No local server, Node.js, or build process is required.
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+## Built With
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser
+- **HTML5 & CSS3** - Core structure and advanced metallic gradients
+- **Tailwind CSS** - Rapid utility-based styling
+- **Vanilla JavaScript** - Logic and DOM manipulation
+- **html-to-image** - High-quality PNG rendering
+- **Google Fonts** - Quality typography using Cinzel, Montserrat, and JetBrains Mono
 
-## 🛠️ Built With
+## Usage
 
-- [React](https://reactjs.org/) - Frontend library
-- [TypeScript](https://www.typescriptlang.org/) - Type checking
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Framer Motion](https://www.framer.com/motion/) - Animations
-- [html2canvas](https://html2canvas.hertzen.com/) - Screenshot functionality
+1. Enter your name, social handle, and daily devlog entry in the text fields.
+2. Upload a profile image simply by clicking the upload area or dragging an image into it.
+3. Select your desired Material (Obsidian, Platinum, Gold).
+4. Choose an Edition layout (Centurion, Executive, Founder).
+5. Preview the result in real-time.
+6. Click Download High-Res or use the Ctrl/Cmd+Enter keyboard shortcut to save the image to your machine.
 
-## 📝 Usage
+## License
 
-1. Enter your devlog content in the editor
-2. Add optional code snippets and tags
-3. Choose from 16+ beautiful card templates with different styles and themes
-4. Click "Create Card"
-5. Download your card as a PNG
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.

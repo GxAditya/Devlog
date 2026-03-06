@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devlog Cards | Premium Edition</title>
-    
+    <title>Devlog | Generate Premium Cards</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=JetBrains+Mono:wght@300;400;500&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=JetBrains+Mono:wght@300;400;500&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,46 +32,64 @@
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-dark text-gray-200 font-montserrat min-h-screen flex flex-col overflow-x-hidden selection:bg-gold-500 selection:text-black">
+
+<body
+    class="bg-dark text-gray-200 font-montserrat min-h-screen flex flex-col overflow-x-hidden selection:bg-gold-500 selection:text-black">
 
     <main class="flex-1 w-full max-w-7xl mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-10">
-        
+
         <section class="w-full lg:w-[400px] flex flex-col gap-6 shrink-0">
             <header class="mb-4">
-                <h1 class="text-3xl font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-500 to-gold-700 font-bold tracking-wider mb-2">DEVLOG</h1>
+                <h1
+                    class="text-3xl font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-500 to-gold-700 font-bold tracking-wider mb-2">
+                    DEVLOG</h1>
                 <p class="text-sm text-gray-400">Generate premium metallic cards for your daily updates.</p>
             </header>
 
-            <button id="btn-demo" class="text-xs tracking-widest uppercase py-2 px-4 rounded border border-gray-700 hover:border-gold-500 hover:text-gold-300 transition-colors w-full text-center">
+            <button id="btn-demo"
+                class="text-xs tracking-widest uppercase py-2 px-4 rounded border border-gray-700 hover:border-gold-500 hover:text-gold-300 transition-colors w-full text-center">
                 Load Demo Data
             </button>
 
-            <div id="drop-zone" class="relative w-full h-32 rounded-lg border-2 border-dashed border-gray-700 bg-surface flex flex-col items-center justify-center cursor-pointer hover:border-gold-500 transition-colors overflow-hidden group">
-                <input type="file" id="image-upload" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+            <div id="drop-zone"
+                class="relative w-full h-32 rounded-lg border-2 border-dashed border-gray-700 bg-surface flex flex-col items-center justify-center cursor-pointer hover:border-gold-500 transition-colors overflow-hidden group">
+                <input type="file" id="image-upload" accept="image/*"
+                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
                 <div class="z-0 text-center px-4">
-                    <svg class="w-8 h-8 mx-auto text-gray-500 mb-2 group-hover:text-gold-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    <p class="text-xs text-gray-400"><span class="text-gold-500">Click to upload</span> or drag and drop</p>
+                    <svg class="w-8 h-8 mx-auto text-gray-500 mb-2 group-hover:text-gold-500 transition-colors"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <p class="text-xs text-gray-400"><span class="text-gold-500">Click to upload</span> or drag and drop
+                    </p>
                 </div>
             </div>
 
             <div class="flex flex-col gap-4">
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-gray-500 mb-1">Your Name</label>
-                    <input type="text" id="input-name" placeholder="John Doe" class="w-full bg-surface border border-gray-800 rounded px-4 py-3 focus:outline-none focus:border-gold-500 transition-colors text-sm placeholder-gray-600">
+                    <input type="text" id="input-name" placeholder="John Doe"
+                        class="w-full bg-surface border border-gray-800 rounded px-4 py-3 focus:outline-none focus:border-gold-500 transition-colors text-sm placeholder-gray-600">
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-gray-500 mb-1">Social Handle</label>
                     <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600">@</span>
-                        <input type="text" id="input-handle" placeholder="johndoe" class="w-full bg-surface border border-gray-800 rounded pl-8 pr-4 py-3 focus:outline-none focus:border-gold-500 transition-colors text-sm placeholder-gray-600">
+                        <input type="text" id="input-handle" placeholder="johndoe"
+                            class="w-full bg-surface border border-gray-800 rounded pl-8 pr-4 py-3 focus:outline-none focus:border-gold-500 transition-colors text-sm placeholder-gray-600">
                     </div>
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-wider text-gray-500 mb-1">Today's Devlog</label>
-                    <textarea id="input-log" rows="4" placeholder="Built a new feature..." class="w-full bg-surface border border-gray-800 rounded px-4 py-3 focus:outline-none focus:border-gold-500 transition-colors text-sm placeholder-gray-600 resize-none font-mono"></textarea>
+                    <textarea id="input-log" rows="4" placeholder="Built a new feature..."
+                        class="w-full bg-surface border border-gray-800 rounded px-4 py-3 focus:outline-none focus:border-gold-500 transition-colors text-sm placeholder-gray-600 resize-none font-mono"></textarea>
                 </div>
             </div>
 
@@ -91,26 +112,38 @@
             </div>
 
             <div class="flex flex-col gap-2 mt-4">
-                <button id="btn-download" class="w-full bg-gradient-to-r from-gold-700 via-gold-500 to-gold-300 text-black font-bold uppercase tracking-wider py-4 rounded hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                <button id="btn-download"
+                    class="w-full bg-gradient-to-r from-gold-700 via-gold-500 to-gold-300 text-black font-bold uppercase tracking-wider py-4 rounded hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
                     Download High-Res
                 </button>
                 <p class="text-center text-[10px] text-gray-500">Cmd/Ctrl + Enter to download</p>
-                <button id="btn-copy" class="w-full bg-surface border border-gray-700 text-gray-300 font-semibold uppercase tracking-wider py-3 rounded hover:border-gray-500 transition-colors flex items-center justify-center gap-2 mt-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                <button id="btn-copy"
+                    class="w-full bg-surface border border-gray-700 text-gray-300 font-semibold uppercase tracking-wider py-3 rounded hover:border-gray-500 transition-colors flex items-center justify-center gap-2 mt-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                        </path>
+                    </svg>
                     Copy to Clipboard
                 </button>
             </div>
         </section>
 
-        <section class="flex-1 flex flex-col items-center justify-center min-h-[500px] w-full bg-black/50 rounded-2xl border border-gray-800 p-4 relative overflow-hidden">
+        <section
+            class="flex-1 flex flex-col items-center justify-center min-h-[500px] w-full bg-black/50 rounded-2xl border border-gray-800 p-4 relative overflow-hidden">
             <div id="preview-wrapper" class="flex items-center justify-center origin-center">
-                
-                <div id="card-export-node" class="relative w-[800px] h-[500px] rounded-2xl shadow-2xl metal-card transition-all duration-300 theme-obsidian">
-                    
+
+                <div id="card-export-node"
+                    class="relative w-[800px] h-[500px] rounded-2xl shadow-2xl metal-card transition-all duration-300 theme-obsidian">
+
                     <div class="card-frame"></div>
 
-                    <div class="absolute top-8 left-10 z-20 w-[55px] h-[40px] opacity-90 rounded-[6px] overflow-hidden shadow-[inset_0_1px_3px_rgba(255,255,255,0.4),0_2px_5px_rgba(0,0,0,0.5)]">
+                    <div
+                        class="absolute top-8 left-10 z-20 w-[55px] h-[40px] opacity-90 rounded-[6px] overflow-hidden shadow-[inset_0_1px_3px_rgba(255,255,255,0.4),0_2px_5px_rgba(0,0,0,0.5)]">
                         <svg viewBox="0 0 60 45" class="w-full h-full">
                             <defs>
                                 <linearGradient id="chipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -120,8 +153,11 @@
                                 </linearGradient>
                             </defs>
                             <rect width="60" height="45" fill="url(#chipGrad)" />
-                            <path d="M 0 15 L 20 15 M 0 30 L 20 30 M 40 15 L 60 15 M 40 30 L 60 30 M 20 0 L 20 45 M 40 0 L 40 45 M 10 15 L 10 30 M 50 15 L 50 30" stroke="var(--chip-stroke)" stroke-width="1.5" fill="none" opacity="0.6"/>
-                            <rect x="23" y="12" width="14" height="21" rx="2" stroke="var(--chip-stroke)" stroke-width="1.5" fill="none" opacity="0.6"/>
+                            <path
+                                d="M 0 15 L 20 15 M 0 30 L 20 30 M 40 15 L 60 15 M 40 30 L 60 30 M 20 0 L 20 45 M 40 0 L 40 45 M 10 15 L 10 30 M 50 15 L 50 30"
+                                stroke="var(--chip-stroke)" stroke-width="1.5" fill="none" opacity="0.6" />
+                            <rect x="23" y="12" width="14" height="21" rx="2" stroke="var(--chip-stroke)"
+                                stroke-width="1.5" fill="none" opacity="0.6" />
                         </svg>
                     </div>
 
@@ -129,48 +165,77 @@
                         <div class="flex-1 flex gap-10 mt-12 z-10">
                             <div class="w-1/3 flex flex-col items-center justify-center border-r card-divider pr-8">
                                 <div class="w-32 h-32 rounded-full border-2 p-1 mb-4 card-avatar">
-                                    <div class="w-full h-full rounded-full bg-gray-800 bg-cover bg-center profile-img-target"></div>
+                                    <div
+                                        class="w-full h-full rounded-full bg-gray-800 bg-cover bg-center profile-img-target">
+                                    </div>
                                 </div>
-                                <h2 class="text-center card-font-title font-bold text-2xl tracking-widest card-accent-text out-name uppercase">John Doe</h2>
-                                <p class="text-center card-font-body text-sm card-text-secondary mt-1">@<span class="out-handle">johndoe</span></p>
+                                <h2
+                                    class="text-center card-font-title font-bold text-2xl tracking-widest card-accent-text out-name uppercase">
+                                    John Doe</h2>
+                                <p class="text-center card-font-body text-sm card-text-secondary mt-1">@<span
+                                        class="out-handle">johndoe</span></p>
                             </div>
                             <div class="w-2/3 flex flex-col justify-center">
-                                <p class="text-[10px] uppercase tracking-[0.2em] mb-2 card-font-body card-text-accent card-date">Daily Devlog <span class="mx-2">•</span> <span class="out-date">00.00.00</span></p>
-                                <div class="card-font-body text-lg leading-relaxed card-text-primary whitespace-pre-wrap out-log"></div>
+                                <p
+                                    class="text-[10px] uppercase tracking-[0.2em] mb-2 card-font-body card-text-accent card-date">
+                                    Daily Devlog <span class="mx-2">•</span> <span class="out-date">00.00.00</span></p>
+                                <div
+                                    class="card-font-body text-lg leading-relaxed card-text-primary whitespace-pre-wrap out-log">
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tpl-content w-full h-full absolute inset-0 hidden p-10 flex-col justify-between" id="tpl-view-2">
+                    <div class="tpl-content w-full h-full absolute inset-0 hidden p-10 flex-col justify-between"
+                        id="tpl-view-2">
                         <div class="text-right z-10 w-full flex justify-end">
-                            <h2 class="card-font-title font-bold text-[40px] tracking-[0.2em] card-accent-text uppercase out-name text-right leading-none">John Doe</h2>
+                            <h2
+                                class="card-font-title font-bold text-[40px] tracking-[0.2em] card-accent-text uppercase out-name text-right leading-none">
+                                John Doe</h2>
                         </div>
                         <div class="z-10 w-[85%] self-end text-right border-t card-divider pt-6 mt-6">
-                            <div class="card-font-body text-xl leading-relaxed card-text-primary whitespace-pre-wrap out-log"></div>
+                            <div
+                                class="card-font-body text-xl leading-relaxed card-text-primary whitespace-pre-wrap out-log">
+                            </div>
                         </div>
                         <div class="z-10 flex items-end justify-between w-full mt-auto pt-6">
-                            <p class="card-font-body text-sm tracking-wider card-text-secondary">@<span class="out-handle">johndoe</span></p>
+                            <p class="card-font-body text-sm tracking-wider card-text-secondary">@<span
+                                    class="out-handle">johndoe</span></p>
                             <div class="flex items-center gap-4">
-                                <p class="text-xs uppercase tracking-[0.3em] card-font-body out-date card-date card-text-accent">00.00.00</p>
-                                <div class="w-12 h-12 rounded border bg-cover bg-center profile-img-target shadow-lg card-avatar-small"></div>
+                                <p
+                                    class="text-xs uppercase tracking-[0.3em] card-font-body out-date card-date card-text-accent">
+                                    00.00.00</p>
+                                <div
+                                    class="w-12 h-12 rounded border bg-cover bg-center profile-img-target shadow-lg card-avatar-small">
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tpl-content w-full h-full absolute inset-0 hidden p-10 flex-col items-center text-center justify-center founder-border" id="tpl-view-3">
-                        <div class="absolute top-10 right-10 text-xs uppercase tracking-[0.3em] card-font-body out-date z-10 card-date card-text-accent">00.00.00</div>
-                        
+                    <div class="tpl-content w-full h-full absolute inset-0 hidden p-10 flex-col items-center text-center justify-center founder-border"
+                        id="tpl-view-3">
+                        <div
+                            class="absolute top-10 right-10 text-xs uppercase tracking-[0.3em] card-font-body out-date z-10 card-date card-text-accent">
+                            00.00.00</div>
+
                         <div class="z-10 flex flex-col items-center mt-6">
                             <div class="w-24 h-24 rounded-full border p-1 mb-4 card-avatar-large">
-                                <div class="w-full h-full rounded-full bg-gray-800 bg-cover bg-center profile-img-target"></div>
+                                <div
+                                    class="w-full h-full rounded-full bg-gray-800 bg-cover bg-center profile-img-target">
+                                </div>
                             </div>
-                            <h2 class="card-font-title font-bold text-3xl tracking-widest card-accent-text uppercase out-name">John Doe</h2>
+                            <h2
+                                class="card-font-title font-bold text-3xl tracking-widest card-accent-text uppercase out-name">
+                                John Doe</h2>
                             <div class="flex items-center gap-3 mt-2 mb-8">
                                 <div class="w-12 h-[1px] card-line-left"></div>
-                                <p class="card-font-body text-sm card-text-secondary">@<span class="out-handle">johndoe</span></p>
+                                <p class="card-font-body text-sm card-text-secondary">@<span
+                                        class="out-handle">johndoe</span></p>
                                 <div class="w-12 h-[1px] card-line-right"></div>
                             </div>
-                            <div class="card-font-body text-lg leading-relaxed card-text-primary max-w-[600px] whitespace-pre-wrap out-log"></div>
+                            <div
+                                class="card-font-body text-lg leading-relaxed card-text-primary max-w-[600px] whitespace-pre-wrap out-log">
+                            </div>
                         </div>
                     </div>
 
@@ -178,7 +243,8 @@
             </div>
         </section>
     </main>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>
